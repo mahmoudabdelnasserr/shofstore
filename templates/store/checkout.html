@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<section class="container">
+			{% if not cart_items %}
+	<h4 class="text-center" style="color: red">Your Shopping Cart is Empty</h4>
+	<br>
+	<div class="text-center">
+		<a href="{% url 'store' %}" class="btn btn-warning">Continue Shopping</a>
+	</div>
+{% else %}
+			<div class="row">
+				<div class="col-sm-02">
+					<p>{{ cart_items.count }} product in your cart</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<th>Product</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Total</th>
+                            <th>Grand Total</th>
+							<th></th>
+						</tr>
+					{% for cart_item in cart_items %}
+						<tr>
+							<td>
+								<div class="product">
+									<img src="{{ cart_item.product.images.url}}" alt ="Hafucha Side Tables" width="100" height="100">
+									<p class="bolder">{{ cart_item.product.product_name }}</p>
+								</div>
+							</td>
+							<td>
+								<div class="quantity">
+									{{ cart_item.quantity }}
+								</div>
+							</td>
+							<td>
+								${{ cart_item.product.price }}
+							</td>
+							<td class="totalamount">
+							{{ cart_item.sub_total }}
+							</td>
+                            	<td class="totalamount">
+							{{ grand_total }}
+							</td>
+							<td>
+								<a class="removefromcart" href="#">{{ cart_item.product.quantity }}</a>
+							</td>
+
+						</tr>
+					{% endfor %}
+					{% endif %}
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<fieldset class="tax">
+						<h3>Place Order</h3>
+						    <form action="{% url 'place_order' %}" method="POST">
+                                    {% csrf_token %}
+						      <div class="form-row">
+                                <div class="col form-group">
+                                  <label for="">City</label>
+                                  <input type="text" name="city" class="form-control" required>
+                                </div>
+					        <div class="col form-group">
+                              <label for="">State</label>
+                              <input type="text" name="state" class="form-control" required>
+                            </div>
+						      <div class="col form-group">
+                              <label for="">Phone Number</label>
+                              <input type="text" name="phone" class="form-control" required>
+                            </div>
+                          </div>
+						<button type="submit" name="submit" class="btn btn-warning btn-block">Place Order</button>
+						<a href="{% url 'store' %}" class="btn btn-light btn-block">Continue Shopping</a>
+						</form>
+					</fieldset>
+				</div>
+				<div class="col-sm-4">
+					<fieldset class="tax">
+						<h3>DISCOUNT COAD</h3>
+						<form method="POST">
+							<label>Enter your coupon coad</label>
+							<input name="county" type="text" placeholder="###########">
+							<input class="submitbuttonblack" type="submit" value="APPLY">
+						</form>
+					</fieldset>
+				</div>
+				<div class="col-sm-4 sums">
+				</div>
+
+			</div>
+		</section>
+
+{% endblock %}

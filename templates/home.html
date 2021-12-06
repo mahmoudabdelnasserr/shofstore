@@ -1,0 +1,236 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!--MAIN BODY-->
+		<section class="container container-icons">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="centered">Welcome Modern Furniture Store</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<p class="centered">Lorem Ipsum is simply dummy text of the printing and type- <br> dard dummy text ever since the 1500s, </p>
+				</div>
+			</div>
+			<div class="row icons latest">
+				<div class="col-sm-1 col-sm-offset-1">
+					<p class="iconcaption bolder">New</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img1.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-1">
+					<p class="iconcaption bolder">Living</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img2.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-4">
+					<p class="iconcaption bolder">Bedroom</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-1">
+					<p class="iconcaption bolder">Dining</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img4.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+			</div>
+			<div class="row icons latest">
+				<div class="col-sm-1 col-sm-offset-2">
+					<p class="iconcaption bolder">Storage</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img5.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-6">
+					<p class="iconcaption bolder">Study</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img6.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+			</div>
+			<div class="row icons latest">
+				<div class="col-sm-1 col-sm-offset-1">
+					<p class="iconcaption bolder">Mattresses</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img8.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-1">
+					<p class="iconcaption bolder">Kitchens</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img9.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-4">
+					<p class="iconcaption bolder">Wardrobes</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img10.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+				<div class="col-sm-1 col-sm-offset-1">
+					<p class="iconcaption bolder">Interiors</p>
+					<a class="linethrough" href="#"><img src="{% static 'images/imgs/img11.jpg' %}" width="60" height="60" alt="Category"></a>
+				</div>
+			</div>
+		</section>
+		<section class="container-fluid related">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<h2>Modern Furniture</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<p>Lorem Ipsum is simply dummy text of the printing and type dard dummy text ever since the 1500s.</p>
+				</div>
+			</div>
+		</section>
+				{% csrf_token %}
+		<div id="myCarousel" class="container-fluid withaddtocart related carousel slide">
+			<div class="carousel-inner chaires">
+				<div class="row prod-grid-6-next prod-grid-6 item active">
+			{% for product in products %}
+					<div class="col-sm-3">
+						<div class="addtocart">
+							<ul>
+								<li><button><img src="{{ product.images.url}}" alt="Add to cart" width="21" height="20">ADD TO CART</button>
+								</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+								</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+							</ul>
+						</div>
+						<a href="{{ product.get_url }}"><img src="{{ product.images.url }}" alt="Product">{{ product.product_name }}</a>
+						<p>${{ product.price }}</p>
+					</div>
+			{% endfor %}
+				</div>
+
+<!--				<div class="row prod-grid-6 prod-grid-6-next item">-->
+<!--				</div>-->
+<!--			</div>-->
+
+<!--&lt;!&ndash;			<div class="row navlinks centered">&ndash;&gt;-->
+<!--&lt;!&ndash;				<div class="col-sm-1 col-sm-offset-5 col-xs-6">&ndash;&gt;-->
+<!--&lt;!&ndash;					<img src="http://placehold.it/26x50" alt="Previous" width="26" height="50"><a href="#myCarousel" class="left1 linethrough" role="button" data-slide="prev">PREV</a>&ndash;&gt;-->
+<!--&lt;!&ndash;				</div>&ndash;&gt;-->
+<!--&lt;!&ndash;				<div class="col-sm-1 col-xs-6">&ndash;&gt;-->
+<!--&lt;!&ndash;					<a href="#myCarousel" class="right1 linethrough" role="button" data-slide="next">NEXT</a><img src="http://placehold.it/26x50" alt="Next" width="26" height="50">&ndash;&gt;-->
+<!--&lt;!&ndash;				</div>&ndash;&gt;-->
+
+<!--			</div>-->
+<!--		</div>-->
+
+		<section id="myCarousel2" class="container latestnews carousel slide">
+			<div class="row">
+				<div class="col-sm-12">
+					<h2 class="centered">Latest News</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<p>Lorem Ipsum is simply dummy text of the printing and type dard dummy text ever since the 1500s.</p>
+				</div>
+			</div>
+			<div class="carousel-inner">
+				<div class="row item active">
+					{% for product in products %}
+					<div class="col-sm-4">
+						<a href="{{ product.get_url }}"><img src="{{ product.images.url }}" alt="Latest News 01">
+						<p>Jan 13, 2016 / 20 Comments</p>
+						<p class="bolder">{{ product.product_name }}</p>
+					</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</section>
+		<div class="container-fluid">
+			<div class="row navlinks centered">
+				<div class="col-sm-1 col-sm-offset-5 col-xs-6">
+					<img src="http://placehold.it/26x50" alt="Previous" width="26" height="50"><a href="#myCarousel2" class="left2 linethrough">PREV</a>
+				</div>
+				<div class="col-sm-1 col-xs-6">
+					<a href="#myCarousel2" class="right2 linethrough">NEXT</a><img src="http://placehold.it/26x50" alt="Next" width="26" height="50">
+				</div>
+			</div>
+		</div>
+		<section id="myCarousel3" class="jumbotron latest carousel slide">
+			<div class="container carousel-inner">
+				<div class="item active">
+					<div class="row">
+						<div class="col-sm-2 col-sm-offset-5 quotes centered">
+							<img src="{% static 'images/imgs/img.jpg' %}" alt="Quotes" width="69" height="60">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1">
+							<p class="centered">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,<br>
+							making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked<br>
+	 						cites of the word in classical literature, discovered the undoubtable source.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<h3 class="centered">DUDLEY WARD</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<p class="centered">Web designer</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row">
+						<div class="col-sm-2 col-sm-offset-5 quotes centered">
+							<img src="http://placehold.it/69x60" alt="Quotes" width="69" height="60">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1">
+							<p class="centered">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,<br>
+							making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked<br>
+	 						cites of the word in classical literature, discovered the undoubtable source.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<h3 class="centered">DUDLEY WARD</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<p class="centered">Web designer</p>
+						</div>
+					</div>
+				</div>
+				<div class="item">
+					<div class="row">
+						<div class="col-sm-2 col-sm-offset-5 quotes centered">
+							<img src="http://placehold.it/69x60" alt="Quotes" width="69" height="60">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1">
+							<p class="centered">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC,<br>
+							making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked<br>
+	 						cites of the word in classical literature, discovered the undoubtable source.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<h3 class="centered">DUDLEY WARD</h3>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4 col-sm-offset-4">
+							<p class="centered">Web designer</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<ul class="round-pagination carousel-indicators">
+						<li data-target="#myCarousel3" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel3" data-slide-to="1"></li>
+						<li data-target="#myCarousel3" data-slide-to="2"></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+
+
+</body>
+</html>
+
+{% endblock %}

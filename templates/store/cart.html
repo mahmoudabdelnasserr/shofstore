@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<section class="container">
+			{% if not cart_items %}
+	<h4 class="text-center" style="color: red">Your Shopping Cart is Empty</h4>
+	<br>
+	<div class="text-center">
+		<a href="{% url 'store' %}" class="btn btn-warning">Continue Shopping</a>
+	</div>
+{% else %}
+			<div class="row">
+				<div class="col-sm-02">
+					<p>{{ cart_count }} product in your cart</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<th>Product</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Total</th>
+							<th></th>
+						</tr>
+					{% for cart_item in cart_items %}
+						<tr>
+							<td>
+								<div class="product">
+									<img src="{{ cart_item.product.images.url}}" alt ="Hafucha Side Tables" width="100" height="100">
+									<p class="bolder">{{ cart_item.product.product_name }}<br> {{ cart_item.product.description }}</p>
+								</div>
+							</td>
+							<td>
+								<div class="quantity">
+									<a style="border:3px" href="{% url 'remove_cart' cart_item.product.id cart_item.id %}" class="btn btn-light"  type="button" id="button-plus">-</a><span>{{cart_item.quantity}}</span>
+									<form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+											{% csrf_token %}
+									{% for item in cart_item.variations.all %}
+										<input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst }}">
+									{% endfor %}
+									<button class="btn btn-light" type="submit"> + </button>
+									</form>
+								</div>
+							</td>
+							<td>
+								${{ cart_item.product.price }}
+							</td>
+							<td class="totalamount">
+							{{ cart_item.sub_total }}
+							</td>
+							<td>
+								<a class="removefromcart" href="#">{{ cart_item.product.quantity }}</a>
+							</td>
+						</tr>
+					{% endfor %}
+					{% endif %}
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<fieldset class="tax">
+						<h3>SHOPPING AND TAX</h3>
+						<form method="POST">
+							<label>Country</label><br>
+							<input name="county" type="text" placeholder="County Name"><br>
+							<label>State/province</label><br>
+							<input name="state" type="text" placeholder="Please select region, state of province"><br>
+							<label>Zip/postal Code</label><br>
+							<input name="zipcode" type="text" placeholder="Pincode"><br>
+							<input type="submit" value="GET QUOTE" class="submitbuttonblack"><br>
+						</form>
+					</fieldset>
+				</div>
+				<div class="col-sm-4">
+					<fieldset class="tax">
+						<h3>DISCOUNT COAD</h3>
+						<form method="POST">
+							<label>Enter your coupon coad</label>
+							<input name="county" type="text" placeholder="###########">
+							<input class="submitbuttonblack" type="submit" value="APPLY">
+						</form>
+					</fieldset>
+				</div>
+				<div class="col-sm-4 sums">
+					<p>Subtotal: <span> ${{ grand_total }}</span></p>
+					<p>Grand Total: <span> ${{ grand_total }} </span></p>
+					<a href="{% url 'checkout' %}">PROCEED TO CHECKOUT</a>
+				</div>
+
+			</div>
+		</section>
+
+{% endblock %}

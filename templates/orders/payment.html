@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<section class="container">
+			{% if not cart_items %}
+	<h4 class="text-center" style="color: red">Your Shopping Cart is Empty</h4>
+	<br>
+	<div class="text-center">
+		<a href="{% url 'store' %}" class="btn btn-warning">Continue Shopping</a>
+	</div>
+{% else %}
+			<div class="row">
+				<div class="col-sm-02">
+				</div>
+			</div>
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table">
+						<tr>
+							<th>Product</th>
+							<th>Quantity</th>
+							<th>Price</th>
+							<th>Total</th>
+							<th></th>
+						</tr>
+					{% for cart_item in cart_items %}
+						<tr>
+							<td>
+								<div class="product">
+									<img src="{{ cart_item.product.images.url}}" alt ="Hafucha Side Tables" width="100" height="100">
+									<p class="bolder">{{ cart_item.product.product_name }}<br> {{ cart_item.product.description }}</p>
+								</div>
+							</td>
+							<td>
+								<div class="quantity">
+								{{cart_item.quantity}}
+									<form action="{% url 'add_cart' cart_item.product.id %}" method="POST">
+											{% csrf_token %}
+									{% for item in cart_item.variations.all %}
+										<input type="hidden" name="{{ item.variation_category | lower }}" value="{{ item.variation_value | capfirst }}">
+									{% endfor %}
+									</form>
+								</div>
+							</td>
+							<td>
+								${{ cart_item.product.price }}
+							</td>
+							<td class="totalamount">
+							{{ cart_item.sub_total }}
+							</td>
+							<td>
+								<a class="removefromcart" href="#">{{ cart_item.product.quantity }}</a>
+							</td>
+						</tr>
+					{% endfor %}
+					{% endif %}
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+
+				</div>
+
+				<div class="col-sm-4 sums" style="text-align:center">
+					<p>Subtotal: <span> ${{ total }}</span></p>
+					<p>Tax: <span> ${{ tax }} </span></p>
+					<p>Grand Total: <span> ${{ grand_total }} </span></p>
+
+									<div id="paypal-button-container">
+							<!-- PayPal Button Will Load -->
+						</div>
+
+					</div> <!-- card-body.// -->
+				</div> <!-- card.// -->
+
+
+
+
+		</section>
+<script>
+
+	function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+	var amount = "{{ grand_total }}"
+	var url = "{% url 'payments' %}"
+	var csrftoken = getCookie('csrftoken');
+	var orderID = "{{order.order_number}}"
+	var payment_method = 'PayPal'
+	var redirect_url = "{% url 'order_complete' %}"
+	// Render the PayPal button into #paypal-button-container
+	paypal.Buttons({
+
+		style: {
+			color: 'blue',
+			shape: 'rect',
+			label: 'pay',
+			height: 40
+		},
+
+		// Set up the transaction
+		createOrder: function(data, actions) {
+			return actions.order.create({
+				purchase_units: [{
+					amount: {
+						value: amount,
+					}
+				}]
+			});
+		},
+
+		// Finalize the transaction
+		onApprove: function(data, actions) {
+			return actions.order.capture().then(function(details) {
+				// Show a success message to the buyer
+				console.log(details);
+				sendData();
+				function sendData(){
+					fetch(url, {
+						method : "POST",
+						headers: {
+							"Content-type": "application/json",
+							"X-CSRFToken": csrftoken,
+						},
+						body: JSON.stringify({
+							orderID: orderID,
+							transID: details.id,
+							payment_method: payment_method,
+							status: details.status,
+						}),
+					})
+				  .then((response) => response.json())
+				  .then((data) => {
+						window.location.href = redirect_url + '?order_number='+data.order_number+'&payment_id='+data.transID;
+					});
+				}
+			});
+		}
+
+
+	}).render('#paypal-button-container');
+</script>
+{% endblock %}

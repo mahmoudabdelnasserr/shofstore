@@ -1,0 +1,1988 @@
+/*--------------------------------------------------------------------
+TABLE OF CONTENTS
+
+01. Fonts import
+02. Basic Classes
+03. Font Classes
+04. Headings
+05. Inputs
+06. Header
+07. Side Navigation Menu // .sidenav
+08. Topbar // #topleft,#topright
+09. Logo, Nav Toggler, Cart // #logo, #nav-toggle, #cart
+10. Jumbotron // .jumbotron
+11. Homepage
+12. Cart
+13. Product Page
+14. Latest News
+15. Footer
+
+--------------------------------------------------------------------*/
+
+
+
+/*01. Fonts Import*/
+
+@font-face{
+	font-family:Montserrat-Light;
+	src:url("../fonts/Montserrat-Light.otf");
+}
+
+@font-face{
+	font-family:Montserrat-Bold;
+	src:url("../fonts/Montserrat-Bold.otf");
+}
+
+@font-face{
+	font-family:Montserrat-Regular;
+	src:url("../fonts/Montserrat-Regular.otf");
+}
+
+/*02. Basic Classes*/
+
+.floater{
+	float:right;
+}
+
+.centered{
+	text-align: center;
+}
+
+h3.linethrough{
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+}
+
+h3.linethrough::after{
+	content: "";
+    width:100%;
+    background-color: #ffbe40;
+    display: block;
+    height: 6px;
+    margin-top:-11px;
+    z-index: -1;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+}
+
+.linethrough:hover{
+	text-decoration: none;
+}
+
+.linethrough::after {
+    content: "";
+    width:0%;
+    background-color: #ffbe40;
+    display: block;
+    height: 6px;
+    margin-top:-13px;
+    z-index: -10;
+    margin-left:auto;
+    margin-right:auto;
+    position: relative;
+    transition:width 0.5s ease;
+}
+
+.linethrough:hover::after{
+	width:100%;
+	transition:width 0.5s ease;
+}
+
+/*03. Font Classes*/
+
+p,
+span{
+	font-family: "Montserrat-Light",sans-serif;
+	font-size:14px;
+	font-weight: 300;
+	color:#808080;
+	line-height: 25px;
+}
+
+.boldest{
+	font-family:"Montserrat-Bold",sans-serif;
+	font-weight: 700;
+	font-size:14px;
+	color:#000;
+}
+
+.bolder{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-weight: 400;
+	font-size:14px;
+}
+
+
+/*04. Headings*/
+
+h1,
+.jumbotron h1{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 800;
+	font-size: 30px;
+}
+
+h2{
+	font-family: 'Playfair Display', serif;
+	font-weight: 700;
+	font-size: 45px;
+}
+
+h3{
+	font-family: "Montserrat-Bold", sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+h4{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size:30px;
+	color:#4c4c4c;
+}
+
+/*05. Inputs*/
+
+
+input:not(.input-btn),
+textarea{
+	border-radius: 0;
+	border:solid 1px #ddd;
+	font-family: "Montserrat-Light",sans-serif!important;
+	font-size: 13px;
+	font-style: italic;
+	font-weight: 300;
+	color:#808080;
+	width: 100%;
+	height:45px;
+	padding:5px 15px;
+	resize:none;
+	transition:border-color 0.5s ease;
+}
+
+textarea{
+	padding:10px 15px;
+	height:auto;
+}
+
+/*06. Header*/
+
+#topbar{
+	position: relative;
+	z-index: 4;
+}
+
+header{
+	position: relative;
+}
+
+#head-container p{
+	font-family: 'Raleway', sans-serif;
+	font-weight: 300;
+	font-size: 14px;
+}
+
+ /*07. The side navigation menu */	
+
+#overlay{
+	display: none;
+	z-index: 5;
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	opacity:0.5; /* see below for cross-browser opacity */
+	background-color: #000;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    overflow-y: hidden; /*IE fix*/
+    position: fixed; /* Stay in place */
+    z-index: 30; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #fefefe; /* Black*/
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav *//**/
+    box-shadow:0 5px 30px #222;
+}
+
+.sidenav p{
+	font-size:12px;
+}
+
+.sidenav h3{
+	margin-top:10px;
+	margin-bottom: 0;
+}
+
+.freedelivery{
+	width:85%;
+	margin: 0 auto;
+	border-bottom:solid 1px #ddd;
+}
+
+.freedelivery > img{
+   float:left;
+   margin:-2% 5% 5% 5%;
+}
+
+.sidenav ul{
+	margin-top:10px;
+	margin-bottom:40px;
+}
+
+.sidenav > ul > li > a{
+	display: block;
+	border-bottom: solid 1px #ddd;
+	margin: 8px 8px 8px 32px;
+	padding: 5px 0;
+	font-family:"Montserrat-Regular",sans-serif;
+	font-weight: 500;
+	font-size:12px;
+}
+
+.sidenav > ul li:last-child a{
+	border-bottom: none;
+}
+
+.sidenav > ul li > a > img{
+	margin-right:30px;
+}
+
+.sidenav > ul li{
+	display: block;
+}
+
+.sidenav a {
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    transition: 0.3s
+}
+
+.sidenav #pagesmenu a{	
+	border-bottom: none;
+	padding:5px 0;
+}
+
+.sidenav #pagesmenu{
+	margin-top:40px;
+	margin-bottom:0; 
+}
+
+.sidenav #pagesmenu li:first-child{
+	margin-left:32px;
+}
+
+#menu-social{
+	display: none;
+	position:fixed;
+	bottom:0;
+	width: 300px;
+	background-color:#bbb;
+}
+
+#menu-social > ul{
+	width: 86%;
+	margin:0 auto;
+}
+
+#menu-social > ul > li{
+	margin:5px 10px;
+}
+
+#menu-social > ul > li >a{
+	border:none;
+	width:40px;
+	height:40px;
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #ffc859;
+    text-decoration: none;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 50px;
+    left:32px;
+    font-size: 40px;
+    color:#000;
+    font-family: "Montserrat-Light",sans-serif;
+    font-weight: 300;
+   	letter-spacing:2px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+
+/*08. Top Bar*/
+
+header ul{
+	list-style: none;
+	padding:0;
+	margin:0;
+}
+
+.pagehead{
+	text-align:center;
+}
+
+.row.pagehead{
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	-webkit-box-align: center;
+
+	align-items: center;
+}
+
+header ul > li{
+	font-size:13px;
+	display: inline-block;
+}
+
+ul#topleft > li > a{
+	display: inline-block;
+	margin:15px;
+	text-align:center;
+	font-family:"Montserrat-Light", sans-serif;
+	color:#000;
+	text-decoration: none;
+}
+
+ul#topleft{
+	margin-left:30px;
+}
+
+ul#topright{
+	margin-right: 30px;
+	float:right;
+}
+
+ul#topright > li{
+	display: inline-block;
+	padding:15px 5px;
+	text-align:center;
+	font-family:"Montserrat-Light", sans-serif;
+	color:#000;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+#usermenu{
+	padding-bottom: 5px;
+}
+
+#usermenu ul li{
+	display: block;
+	text-align: right;
+}
+
+#usermenu ul li a{
+	padding: 3px;
+	color:#888;
+	transition:color 1s ease;
+}
+
+#usermenu ul li a:hover{
+	text-decoration: none;
+	color:#ccc;
+	transition:color 1s ease;
+}
+
+.popup {
+	box-sizing: border-box;
+	display: none;
+	position: absolute;
+	z-index: 3;
+	top: 25px;
+	right: 30px;
+	padding: 15px;
+	padding-top:30px;
+	border-bottom: solid 1px #ccc;
+}
+
+
+#searchform input{
+	height: 30px;
+    width: 300px;
+}
+
+#searchform button{
+	position: absolute;
+    right: 15px;
+    top: 30px;
+    height: 30px;
+    background: #000;
+    border: none;
+    color: #ccc;
+    font-style: italic;
+}
+
+.login-abs{
+	position: absolute;
+	background:#fff;
+	border:1px solid #ccc;
+	border-radius:0 0 5px 5px;
+	right:20px;
+	top:46px;
+	z-index: 100;
+	display: none;
+}
+
+.login-abs input{
+	width:120px;
+	padding:2px 10px;
+	height: auto;
+	display: block;
+	margin: 5px;
+	border-radius:5px;
+}
+
+#loginbutton{
+	float:right;
+	background-color: #ffc859;
+	border-radius: 5px;
+	border:solid 1px #ccc;
+	transition:background-color 0.5s ease;
+	margin:5px;
+}
+
+#loginbutton:hover{
+	background-color: #ffeecc;
+	transition:background-color 0.5s ease;
+}
+
+/*09. Logo, Nav toggler, Cart*/
+
+#logo{
+	display: inline-block;
+	text-align:center;
+	margin:52px 0;
+}
+
+
+
+#nav-toggle{
+	margin:66px 30px;
+	display: inline-block;
+}
+
+#nav-toggle > a{
+	text-decoration: none;
+	padding:2px 8px;
+	display: table-cell;
+    vertical-align: middle;
+}
+
+#nav-toggle > span{
+	color:#4c4c4c;
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 14px;
+	padding:8px;
+	display: table-cell;
+    vertical-align: middle;
+}
+
+#cart{	
+	margin:67px 0;
+	position:relative;
+	display: inline-block;
+}
+
+#cart img{
+	margin-right: 5px;
+}
+
+#cart > a{
+	padding:8px;
+    color:#4c4c4c;
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 12px;
+	display: inline-block;
+	transition:color 0.5s ease;
+}
+
+#cart > a:hover{
+	text-decoration: none;
+	color:#ccc;
+	transition:color 0.5s ease;
+}
+
+#cartitems{
+	background-image:url("http://placehold.it/15x15"); 
+	width:15px;
+	height:15px;
+	position:absolute;
+	left:30px;
+	top:0;
+}
+
+#cartitems > span{
+	color:#4c4c4c;
+	font-family:"Montserrat-Regular",sans-serif;
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 18px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+/**/
+
+header .jumbotron{
+	height:400px;
+	text-align: center;
+	background-image: url("http://placehold.it/1912x768");
+}
+
+header .jumbotron .container{
+	margin-top:50px;
+}
+
+#head-container{
+	background-color: #f5cf81;
+	padding:42px;
+}
+
+
+/*HOME PAGE*/
+
+h2.num{
+	font-size: 24px;
+}
+
+.atleft .vertical{
+	border-left:solid 1px #000;
+	height:100px;
+	box-sizing:border-box;
+}
+
+.thetext{
+	margin-top:20px;
+}
+
+.hr-line{
+	border-top:solid 2px #ffc859;
+}
+
+.thetext > div:not(.hr-line){
+	margin-top:-10px;
+}
+
+.readmore{
+	margin-top:20px;
+}
+
+.readmore a{
+	letter-spacing: 3px;
+	transition:color 0.5s ease;
+}
+
+.readmore a:hover{
+	text-decoration: none;
+	color:#aaa;
+	transition:color 0.5s ease;
+}
+
+.imageright{
+	position: relative;
+	margin-top: 20px;
+}
+
+.bg-simple-right{
+	width:500px;
+	height:550px;
+	position:absolute;
+	background-color: #ededed;
+	left:50px;
+	z-index: 5;
+}
+
+.bg-effect-right{
+	width:500px;
+	height:550px;
+	position:absolute;
+	background-image:url("http://placehold.it/130x130");
+	top:45px;
+	z-index: 4;
+}
+
+.imageright img{
+	top:100px;
+	left:110px;
+	position: absolute;
+	z-index: 6;
+}
+
+.atright .vertical{
+	border-right:solid 1px #000;
+	height:100px;
+	box-sizing:border-box;
+}
+
+.atright{
+	text-align: right;
+	margin:200px 0 80px 0;
+}
+
+.bg-simple-left{
+	width:500px;
+	height:550px;
+	position:absolute;
+	background-color: #ededed;
+	left:-50px;
+	z-index: 5;
+}
+
+.bg-effect-left{
+	width:500px;
+	height:550px;
+	position:absolute;
+	background-image:url("http://placehold.it/130x130");
+	top:45px;
+	z-index: 4;
+}
+
+.imageleft img{
+	top:180px;
+	left:-160px;
+	position: absolute;
+	z-index: 6;
+}
+
+
+
+.jumbotron.latest.centered{
+	background-image:url("http://placehold.it/1920x600");
+	margin-bottom: 100px;
+	background-size: 100% 100%;
+	padding:0;
+	height: 500px;
+}
+
+.jumbotron.latest.centered img{
+	margin-top:80%;
+	display: inline-block;
+}
+
+.jumbotron.latest.centered h3{
+	margin-bottom: 30%;
+}
+
+#cartpopup{
+	display: none;
+	width:300px;
+	height: 450px;
+	position:absolute;
+	right:50px;
+	top:100px;
+	z-index: 1000;
+	background: #fff;
+ 	-webkit-box-shadow: 0px 0px 15px #ccc;
+ 	   -moz-box-shadow: 0px 0px 15px #ccc;
+		 	box-shadow: 0px 0px 15px #ccc;
+}
+
+#cartpopup h3,
+#cartpopup p,
+#cartpopup span,
+#cartpopup a{
+	font-size: 12px!important;
+}
+
+#cartpopup a.boldest{
+	padding:10px;
+	border: solid;
+	margin: 20px;
+	transition:all .5s ease;
+}
+
+#cartpopup a.boldest:hover{
+	background-color: #000;
+	color:#fff;
+	transition:all .5s ease;
+	text-decoration: none;
+	border:solid #000;
+}
+
+
+.cartitem{
+	width:100%;
+	margin-bottom: 20px;
+	clear: both;
+}
+
+.cartitem p{
+	padding-top:20px;
+}
+
+.cartitem p.bolder{
+	padding-top:0;
+}
+
+.cartitem a{
+	color:#222;
+	transition: color 1s ease;
+}
+
+.cartitem a:hover{
+	text-decoration: none;
+	color:#ccc;
+	transition: color 1s ease;
+}
+
+.cartitem img{
+	float:left;
+}
+
+/*CONTACT PAGE*/
+
+.contactbox span,
+.contactbox p{
+	width:80%;
+	margin:45px 0;
+}
+
+.contactbox img{
+	margin-right: 20px;
+}
+
+#contact-form label{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 14px;
+	color:#4c4c4c;
+	margin-top:45px;
+}
+
+#submitform{
+	border:none!important;
+	background-color:#ffc859;
+	font-family: "Montserrat-Bold", sans-serif!important;
+	font-weight: 700!important;
+	color:#000!important;
+	font-style: normal!important;
+	width: auto!important;
+	font-size:14px;
+	letter-spacing: 4px;
+	margin-top:30px;
+	transition:background-color 0.5s ease;
+}
+
+#submitform:hover{
+	color:#000;
+	text-decoration: none;
+	background-color: #e69900;
+	transition:background-color 0.5s ease;
+}
+
+.googlemap{
+	margin:50px 0;
+}
+
+#map{
+	width: 100%;
+	height: 50vh;
+}
+
+/*CART*/
+
+table{
+	border-collapse: collapse;
+	border:solid 1px #ddd;
+}
+
+.container > .row > .table-responsive > table > tbody > tr > td{
+	vertical-align: middle;
+	text-align:center;
+	font-family:"Montserrat-Regular",sans-serif;
+	font-weight:400;
+	font-size:14px;
+	color:#808080;
+}
+
+table .product > img{
+	float:left;
+	margin-left:50px;
+}
+
+.quantity{
+	height:20px;
+	border:solid 1px #ddd;
+	display: table;
+	margin:auto;
+
+}
+
+.quantity > a{
+	height:20px;
+	vertical-align: middle;
+	width:20px;
+	text-align: center;
+	display: table-cell;
+	transition:background-color 0.5s ease;
+}
+
+.quantity > span{
+	display: table-cell;
+	height:20px;
+	border-right:solid 1px #ddd;
+	border-left:solid 1px #ddd;
+	width:60px;
+	text-align: center;
+	font-family:"Montserrat-Regular",sans-serif;
+	font-weight:400;
+	font-size:12px;
+	color:#808080;
+}
+
+.quantity a:hover, 
+.quantity a:focus{
+	text-decoration: none;
+}
+
+.quantity a:hover{
+	background-color: #ccc;
+	transition:background-color 0.5s ease;
+}
+
+.container > .row > .table-responsive > table > tbody >tr > th{
+	text-align:center;
+}
+
+.totalamount{
+	font-family:"Montserrat-Bold",sans-serif!important;
+	font-weight:700!important;
+	color:#000!important;
+}
+
+.removefromcart{
+	font-size:20px;
+	color:#000;
+}
+
+.removefromcart:hover{
+	text-decoration: none;
+}
+
+
+fieldset.tax >h3{
+	padding:30px 0 10px 30px;
+}
+
+fieldset.tax{
+	border:solid 1px #ddd;
+	margin-bottom: 20px;
+}
+
+fieldset.tax > form{
+	display: table;
+	padding-left:30px;
+	width:90%;	
+}
+
+fieldset.tax > form > label{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 14px;
+	color:#4c4c4c;
+	margin-top:20px;
+}
+
+.submitbuttonblack{
+	border:none;
+	font-style:normal!important;
+	background-color: #000;
+	border-radius: 0;
+	height:40px;
+	float:right;
+	padding:5px 15px;
+	font-family: "Montserrat-Bold",sans-serif!important;
+	letter-spacing: 4px;
+	color:#fff!important;
+	font-size: 14px;
+	font-weight: 700!important;
+	width:auto!important;
+	margin:20px 0;
+	transition:background-color 0.5s ease;
+}
+
+.submitbuttonblack:hover{
+	background-color: #555;
+	transition:background-color 0.5s ease;
+}
+
+.sums p span{
+	float:right;
+}
+
+
+.sums p{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 16px;
+	color:#000;
+	background-color:#ededed;
+	padding:20px 30px;
+}
+
+.sums a{
+	font-family: "Montserrat-Bold",sans-serif;
+	letter-spacing: 4px;
+	font-size: 14px;
+	display: inline-block;
+	color:#000;
+	background-color: #ffc859;
+	width:100%;
+	text-align: center;
+	padding:20px 0;
+	transition:background-color 0.5s ease;
+}
+
+.sums a:hover{
+	color:#000;
+	text-decoration: none;
+	background-color: #e69900;
+	transition:background-color 0.5s ease;
+}
+
+
+
+/*PRODUCT PAGE*/
+
+.product-preview > .row:first-child > div:first-child >img{
+	width:100%;
+	height:auto;
+}
+
+.product-preview ul > li > a > img{
+	width:100%;
+}
+
+.product-details h4{
+	color:#000;
+}
+
+/*----- Tabs -----*/
+.tabs {
+    width:100%;
+    height: 400px;
+    display:inline-block;
+    margin-top:50px;
+}
+
+/*----- Tab Links -----*/
+/* Clearfix */
+.tab-links:after {
+    display:block;
+    clear:both;
+    content:'';
+}
+
+ul.tab-links{
+	margin-bottom: 0;
+}
+ 
+.tab-links li {
+    margin:0;
+    float:left;
+    list-style:none;
+}
+
+.tab-links a {
+    padding:12px 20px;
+    display:inline-block;
+    background:#fff;
+    color:#808080;
+    transition:all linear 0.15s;
+    border:solid 1px #ddd;
+    font-family: "Montserrat-Light",sans-serif;
+    font-size:14px;
+    font-weight:300;
+}
+
+.tab-links a:hover {
+    background:#a7cce5;
+    text-decoration:none;
+}
+
+li.active a, li.active a:hover {
+    background:#000;
+    color:#ededed;
+}
+
+/*----- Content of Tabs -----*/
+.tab-content {
+    padding:15px;
+    background:#fff;
+    font-family: "Montserrat-Light",sans-serif;
+	font-size:14px;
+	font-weight: 300;
+	color:#808080;
+	line-height: 25px;
+}
+
+.tab {
+    display:none;
+}
+ 
+.tab.active {
+    display:block;
+}
+
+.tab-links{
+	padding-left: 0;
+}
+
+.related > .row {
+	text-align:center;
+}
+
+.product-preview{
+	font-family: "Montserrat-Light",sans-serif;
+	font-size: 14px;
+	color:#808080;
+}
+
+.product-details > a{
+	color:#808080;
+}
+
+.product-details > img{
+	vertical-align: baseline;
+}
+
+.product-details ul {
+	padding:0;
+	list-style: none;
+	margin-bottom: 50px;
+}
+
+
+.product-details li:before{
+	content: "–";
+	padding-right:20px;
+}
+
+#checkpincode{
+	height: 50px;
+	position:relative;
+}
+
+#pin{
+	right: 0;
+	top:5%;
+	position: absolute;
+}
+
+
+#checkpincode button{
+	right:0;
+	position: absolute;
+	border:none;
+	border-radius: 0;
+	height:45px;
+	margin:0;
+	padding:0 15px;
+	background-color:#000;
+}
+
+.product-preview > .row:nth-child(2) > .col-sm-6:first-child > ul{
+	padding:0;
+}
+
+.product-preview > .row:nth-child(2) > .col-sm-6:first-child > ul > li{
+	display:inline-block;
+	width:24%;
+	height: auto;
+}
+
+.colors{
+	display: table-cell;
+	width: 32%
+}
+
+.colors > ul{
+	padding:0;
+	list-style: none;
+}
+
+.colors > ul > li{
+	display: inline-block;
+	padding:2px;
+	border: solid 1px #a0a0a0;
+	margin:2px;
+	border-radius: 2px;
+}
+
+.colors > ul > li:first-child{
+	margin-left: 0;
+}
+.colors > ul > li:last-child{
+	margin-right: 0;
+}
+
+.colors > ul > li > a{
+	display: block;
+	width:21px;
+	height:21px;
+	transition:opacity 0.5s ease;
+}
+
+.colors > ul > li > a:hover{
+	opacity:0.5;
+	transition:opacity 0.5s ease;
+}
+
+#color1{
+	background-color:#d8bea1;
+}
+
+#color2{
+	background-color:#536469;
+}
+
+#color3{
+	background-color:#000;
+}
+
+#color4{
+	background-color:#817572;
+}
+
+#color5{
+	background-color:#a9733a;
+}
+
+.amount{
+	display: table-cell;
+	width: 24%;
+	position:relative;
+}
+
+.info{
+	display: table-cell;
+	width: 300px;
+	border-left:solid 1px #ddd;
+	padding-left:25px;
+}
+
+#checkpincode p{
+	display: inline;
+	position: absolute;
+	top:30%;
+}
+
+.product-details > p{
+	margin-top:10px;
+}
+
+.amount > .quantity{
+	text-align: left;
+	position:absolute;
+}
+
+table .product > p{
+	padding-top:30px;
+	white-space: normal;
+}
+
+.info p{
+	line-height: 13px;
+}
+
+.amount > p{
+	margin-bottom:12px;
+}
+
+.addtocart.atproductpage{
+	width:auto;
+}
+
+.addtocart.atproductpage ul{
+	border: none;
+	border-radius: 0;
+}
+
+.addtocart.atproductpage ul>li{
+	border-left: none;
+	margin:2px;
+
+}
+
+.addtocart.atproductpage ul>li>a{
+	border-radius: 0;
+	transition:all 0.5s ease;
+}
+
+.addtocart.atproductpage ul>li>a:hover{
+	border-radius: 10px;
+	transition:all 0.5s ease;
+}
+
+.col-sm-2 .addtocart{
+	width:250px;
+	top:125px;
+	left:0;
+	right: 0;
+	margin:auto;
+	display: block;
+}
+
+
+.addtocart{
+	display: block;
+	margin-top:10px;
+	width:273px;
+	left:0;
+	right: 0;
+	margin:auto;
+}
+
+.addtocart ul{
+	background-color: #fff;
+	list-style: none;
+	padding:0;
+	border:solid 1px #ddd;
+	display: inline-block;
+	overflow: hidden;
+	border-radius: 20px;
+}
+
+.addtocart ul li{
+	display: inline-block;
+	border-left:solid 1px #ddd;
+	height: 100%;
+}
+
+.addtocart ul li:first-child{
+	border-left: none;
+	border-radius: 20px 0 0 20px;
+}
+
+.addtocart ul li:last-child{
+	border-radius: 0 20px 20px 0;
+}
+
+.addtocart ul li a{
+	opacity:1;
+	transition:opacity 0.5s ease;
+	padding:5px;
+}
+
+.addtocart ul li a:hover{
+	text-decoration: none;
+	opacity: 0.5;
+	transition:opacity 0.5s ease;
+}
+
+
+.addtocart li:first-child a{
+	font-family: "Montserrat-Bold",sans-serif;
+	font-size:12px;
+	font-weight: 700;
+	display: inline-block;
+	background-color:#ffbe40;
+	color:#000;
+	padding:12px 10px 10px 10px;
+	letter-spacing: 4px;
+	border-radius: 20px 0 0 20px;
+	box-sizing:border-box;
+}
+
+.addtocart li:last-child a{
+	border-radius: 0 20px 20px 0;
+}
+
+.addtocart li:first-child a > img{
+	width: auto;
+}
+
+.addtocart li:nth-child(2) a,
+.addtocart li:nth-child(2) a{
+	display:inline-block;
+	padding:  10px 10px 12px 10px;
+	background-color: #f2f2f2;
+}
+
+.addtocart li:nth-child(3) a,
+.addtocart li:nth-child(3) a{
+	display:inline-block;
+	padding:  10px 10px 12px 10px;
+	background-color: #f2f2f2;
+}
+
+.related .row:nth-child(3){
+	margin-top:50px;
+}
+
+.prod-grid-6 > div > img{
+	width:100%;
+	height:auto;
+	margin-bottom: 20px;
+}
+
+.prod-grid-6 > div > p{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 20px;
+	font-weight: 400;
+	color:#000;
+}
+
+.prod-grid-6 > .col-sm-6 > img{
+	margin-bottom: 42px;
+}
+
+.prod-grid-6-next{
+	margin-top: 30px;
+}
+
+.prod-grid-6{
+	text-align: center;
+}
+
+.prod-grid-6 > div > a{
+	font-family: "Montserrat-Regular",sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color:#4c4c4c;
+	margin-bottom:0;
+	display: block;
+}
+
+.prod-grid-6 > div > a > img{
+	width: 100%;
+	height: auto;
+}
+
+.prod-grid-6 > div > a:hover{
+	text-decoration: none;
+}
+
+.related .row:nth-child(4)  a > img{
+	margin:0 10px;
+}
+
+.related .row:nth-child(4){
+	margin-top:50px;
+	margin-bottom: 100px;
+} 
+
+.navlinks a{
+	font-family: "Montserrat-Bold",sans-serif;
+	font-weight: 700;
+	font-size: 14px;
+	color:#000;
+	letter-spacing: 3px;
+	position: relative;
+	display: inline-block;
+}
+
+
+.row.navlinks.centered{
+	margin:50px 0;
+}
+
+#index1 .container-fluid.withaddtocart.related.carousel.slide:not(#myCarousel-chaires){
+	display: none;
+}
+
+#carousel-container{
+	overflow: hidden;
+	height: 560px;
+}
+
+
+
+/*LATEST NEWS*/
+
+
+.w{
+	position:absolute;
+	left:0;
+	top:calc(100% - 48px);
+}
+
+.container-icons{
+	background-image:url("http://placehold.it/500x375");
+	background-repeat: no-repeat;
+	background-position: 50% 70%;
+	background-size: 
+}
+
+.row.icons.latest p{
+	display:block;
+	margin-top:-35px;
+	opacity:0;
+}
+
+.container-fluid.related{
+	margin-top:50px;
+}
+
+.row.icons > .col-sm-1{
+	padding:15px 0 ;
+	background-image:url("http://placehold.it/130x130"); 
+	background-size: 100% 100%;
+	text-align: center;
+}
+
+.row.icons{
+	margin:60px 0;
+}
+
+.row.icons a{
+	display:inline-block;
+	position: relative;
+	z-index: 5;
+}
+
+.row.icons img{
+	vertical-align: baseline;
+}
+
+.row.icons a.linethrough:hover::after{
+	width:97px;
+}
+
+.row.icons .iconcaption{
+	opacity: 0;
+}
+
+.row.icon-list.icons .iconcaption{
+	left:63px;
+}
+
+.row.icons a.linethrough::after{
+	height: 30px;
+	margin-top:-45px;
+	margin-left:-19px;
+	position:absolute;
+}
+.icon-list a.linethrough:hover::after{
+	width: 40%;
+}
+.icon-list a.linethrough::after{
+	width: 0;
+	height: 30px;
+	margin-top:-45px;
+	position:relative;
+}
+
+.latestnews:not(#myCarousel2) .row:nth-child(2) p{
+	margin:20px 0;
+}
+
+.latestnews img{
+	margin-bottom: 15px;
+}
+
+#myCarousel2 .carousel-inner img{
+	width:370px;
+	height:200px;
+}
+
+.jumbotron.latest p{
+	font-family: "Montserrat-Light",sans-serif;
+	font-size:14px;
+	font-weight: 300;
+	color:#808080;
+	line-height: 25px;
+}
+
+.jumbotron.latest{
+	margin:0;
+}
+
+.jumbotron.latest ul{
+	padding:0;
+	text-align: center;
+	list-style: none;
+}
+
+.jumbotron.latest ul > li{
+	display:inline-block;
+	width:12px;
+	height:12px;
+	margin:7px;
+}
+
+.jumbotron.latest ul > li > a{
+	background-color: #666;
+	box-sizing:content-box;
+	display: inline-block;
+	width:12px;
+	height:12px;	
+	border-radius: 12px;
+}
+
+.jumbotron.latest ul > li >a:
+.quotes{
+	margin-bottom: 30px;
+	margin-top:60px;
+}
+
+.jumbotron.latest h3{
+	margin-bottom: 0;
+	letter-spacing: 3px;
+}
+
+#myCarousel3 > .row{
+	margin-top: 60px;
+	margin-right:0;
+}
+
+#myCarousel3 > .row li{
+	background-color:#888;
+	border: none;
+}
+
+#myCarousel3 > .row li:hover{
+	background-color: #fff;
+	box-shadow: 0 0 0 3px rgb(255,200,89);
+}
+
+#myCarousel3 > .row li.active{
+	background-color: #fff;
+	box-shadow: 0 0 0 3px rgb(255,200,89);
+}
+
+.round-pagination.carousel-indicators li:first-child{
+	margin-left:20px;
+}
+
+/*BROWSE PRODUCTS*/
+
+.marged-cont{
+	width:90%;
+	margin:60px auto;
+}
+
+.marged-cont > .container-fluid > .row:first-child span{
+	padding-right: 15px;
+}
+
+.marged-cont > .container-fluid > .row:last-child{
+	text-align: center;
+}
+
+.marged-cont > .container-fluid > .row:last-child a{
+	font-family: "Montserrat-Bold",sans-serif;
+	font-weight: 700;
+	font-size: 14px;
+	color:#000;
+	letter-spacing: 3px;
+	position: relative;
+	display: inline-block;
+}
+
+.marged-cont > .container-fluid > .options{
+	background-color:#ededed;
+}
+
+.marged-cont > .container-fluid > div{
+	padding-top:30px;
+	padding-bottom: 30px;
+}
+
+.marged-cont > .container-fluid ul{
+	display: inline-block;
+	padding-left:0;
+	list-style: none;
+	margin-bottom: 0;
+}
+
+.marged-cont > .container-fluid ul > li:not(.addtocart>ul>li){
+	display: inline-block;
+	padding: 3px;
+	border:1px solid rgb(204, 204, 204);
+	transition:border 0.5s ease;
+}
+
+.marged-cont > .container-fluid ul > li:not(.addtocart>ul>li):hover{
+	display: inline-block;
+	padding: 3px;
+	border:1px solid rgb(0, 0, 0);
+	transition:border 0.5s ease;
+}
+
+.marged-cont > .container-fluid ul > li.active{
+	background-color: #ffc859;
+}
+
+.marged-cont > .container-fluid > .row:first-child select{
+	margin-bottom: 15px;
+	margin-top:15px;
+	border-radius:0;
+	border:solid 1px #ccc;
+	height:40px;
+	color:#888;
+	font-family:"Montserrat-Light",sans-serif;
+	font-size:14px;
+	font-weight:300;
+	padding-left:10px;
+	padding-right: 60px;
+	margin-right:20px;
+	background: url("http://placehold.it/39x38") no-repeat right center;
+	background-color: #fff;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+    transition:border-color 0.5s ease;
+}
+
+.marged-cont > .container-fluid > .row:first-child select option{
+	background-color: #fff;
+	padding:10px;
+}
+
+.marged-cont > .container-fluid > .row:first-child select:hover{
+	border-color:#888;
+	transition:border-color 0.5s ease;
+}
+
+.icon-list > div {
+	margin-top: 20px;
+	text-align:center; 
+}
+
+.icon-list .linethrough:after{
+	height:30px;
+	width:120px;
+	margin-top:-40px;
+}
+
+.icon-list .centered.bolder{
+	margin-top:20px;
+}
+
+.showmore{
+	display: none;
+}
+
+.opts > li{
+	display: inline-block;
+	transition:border-color 0.5s ease;
+}
+
+.opts > li:not(.active){
+	border:solid 1px #ccc;
+}
+
+.opts > li.active{
+	border: solid 1px #ffc859;
+}
+
+.opts > li:hover{
+	border-color:#888;
+	transition:border-color 0.5s ease;
+}
+
+.opts > li.active:hover{
+	border: solid 1px #ccc;
+}
+
+/*SLIDER*/
+
+.jumbotron.withslider{
+	background: none;
+	height:auto;
+	position: relative;
+}
+
+.rslides {
+	position: relative;
+	list-style: none;
+	overflow: hidden;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	min-width: 100%;
+}
+
+.rslides > li {
+	-webkit-backface-visibility: hidden;
+	position: absolute;
+	display: none;
+	width: 100%;
+	left: 0;
+	top: 0;
+
+}
+
+.rslides > li:first-child {
+	position: relative;
+	display: block;
+	float: left;
+}
+
+.rslides img {
+	position: relative;
+	z-index: -12;
+	display: block;
+	height: auto;
+	float: left;
+	width: 100%;
+	border: 0;
+}
+
+.rslides_nav{
+	position:absolute;
+	display:inline-block;
+	z-index: 20;
+	width:7%;
+	top:50%;
+	opacity:0.5;
+	transition:opacity .5s ease;
+}
+
+.rslides_nav.prev{
+	left:3%;
+}
+
+.rslides_nav.next{
+	right:3%;
+}
+
+
+.rslides_nav:hover{
+	opacity: 1;
+	transition:opacity .5s ease;
+}
+
+.rslides_nav span{
+	letter-spacing: 3px;
+	position: relative;
+	display: inline-block;
+	margin:10% 5%;
+}
+
+.withaddtocart .addtocart{
+	position:absolute;
+	top:250px;
+	display: none;
+}
+
+.withaddtocart .col-sm-6 .addtocart{
+	top:220px;
+}
+
+.withaddtocart .col-sm-2 .addtocart{
+	top:150px;
+}
+
+.row.icon-list.icons{
+	margin-bottom:0;
+}
+
+.slider-overlay{
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+width: 100%;
+}
+
+.slider-overlay-2 span:first-child{
+	font-family:"Playfair Display",serif;
+	font-weight: 400;
+	color:#ffc859;
+	font-size: 110px;
+}
+
+.slider-overlay-2 span:last-child{
+	font-family:"Playfair Display",serif;
+	font-weight: 700;
+	color:#ffc859;
+	font-size: 36px;
+	width:1px;
+	margin-right: 25px;
+	display: inline-block;
+    word-wrap: break-word;
+    position: relative;
+	top: -5px;
+}
+
+.slider-overlay-2 h2{
+	margin-top:8%;
+	font-family:"Playfair Display",serif;
+	font-weight: 700;
+	color:#fff;
+	font-size: 80px;
+}
+
+.slider-overlay-2 p{
+	font-family: "Montserrat-Light",serif;
+	font-weight: 300;
+	font-size:14px;
+	color:888;
+}
+
+.slider-overlay-3 ul{
+	display:inline-block;
+	position:absolute;
+	top:30%;
+	left:60%;
+}
+
+.slider-overlay-3 ul>li{
+	text-align: left;
+	display: block;
+}
+
+.slider-overlay-3 ul>li>a{
+	font-family: 'Playfair Display', serif;
+	font-weight: 700;
+	font-size: 32px;
+	color:#000;
+	padding:10px;
+}
+
+.slider-overlay-3 ul>li>a:hover{
+	text-decoration: none;
+}
+
+.slider-overlay-3 ul>li>a::after{
+	margin-top:-20px;
+}
+
+
+
+
+/*Footer*/
+
+footer > .jumbotron > .container ul{
+	list-style: none;
+	width:100%;
+	margin:0;
+	padding:0;
+	white-space: nowrap;
+}
+
+footer > .jumbotron > .container ul > li{
+	display: inline-block;
+	padding:0 3.2%;
+	width:16%;
+	height: auto;
+}
+
+footer > .jumbotron > .container ul > li:first-child{
+	padding:0 3.2% 0 0;
+}
+
+footer > .jumbotron > .container ul > li:last-child{
+	padding:0 0 0 3.2%;
+}
+
+footer > .jumbotron > .container ul > li > a > img{
+	display:inline-block;
+	opacity:0.3;
+	transition:opacity 0.5s ease;
+}
+
+footer > .jumbotron > .container ul > li > a > img:hover{
+	opacity:1;
+	transition:opacity 0.5s ease;
+}
+
+footer > .container > div.row:nth-child(2) h3{
+	margin:30px 0;
+}
+
+footer > .container > div.row:first-child h2 > span{
+	color:#ffc859;
+	font-family: 'Playfair Display', serif;
+	font-weight: 700;
+	font-size: 45px;
+}
+
+#logos{
+	text-align: center;
+}
+
+footer > .container > div.row:first-child a{
+	display: inline-block;
+	font-family: "Montserrat-Bold",sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color:#000;
+	background-color: #ffc859;
+	text-decoration: none;
+	letter-spacing: 3px;
+	padding:16px 40px;
+	margin-top:15%;
+	transition:background-color 1s ease;
+}
+
+footer > .container > div.row:first-child a:hover{
+	background-color: #e69900;
+	transition:background-color 1s ease;
+}
+
+footer > .container > div.row:nth-child(2){
+	background-image:url("http://placehold.it/1250x317");
+}
+
+#subscribe-form{
+	position: relative;
+}
+
+footer > .container > div.row:nth-child(3){
+	margin-top:30px;
+	margin-bottom:20px;
+}
+
+footer > .container > div.row:nth-child(3) ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	float:right;
+}
+
+footer > .container > div.row:nth-child(3) ul > li{
+	display: inline-block;
+	margin-right:6px;
+	opacity: 1;
+	transition:opacity .5s ease;
+}
+
+footer > .container > div.row:nth-child(3) ul > li:hover{
+	opacity: 0.5;
+	transition:opacity .5s ease;
+}
+
+footer > .container > div.row:nth-child(3) ul > li:last-child{
+	margin-right:0;
+}
+
+#subscribe-form > input[type="submit"]{
+	border: none;
+	border-radius: 0;
+	width:44px;
+	height:45px;
+	margin:0;
+	padding:0;
+	background-image: url("http://placehold.it/44x45");
+	position: absolute;
+	right:0;
+	opacity:1;
+	transition:opacity 0.5s ease;
+	top:0;
+}
+
+#subscribe-form > input[type="submit"]:hover{
+	opacity: 0.5;
+	transition:opacity 0.5s ease;
+}
+

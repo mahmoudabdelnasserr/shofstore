@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+		<section class="container product-preview">
+		<form action="{% url 'add_cart' single_product.id %}" method="POST">
+		{% csrf_token %}
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="{{ single_product.images.url }}" alt="Cleon Lounge Chair">
+				</div>
+				<div class="col-sm-6 product-details">
+					<h4>{{ single_product.product_name }}</h4>
+					<img src="http://placehold.it/69x11" alt="3 of 5 rating" width="69" height="11"> <a href="#">(1) Review</a> | <a href="{#}">Add Your Review</a>
+					<p><span class="boldest">Availability : </span>{{ single_product.stock }}</p>
+					<h4>${{ single_product.price}}</h4>
+					<p class="bolder">{{ single_product.description }}</p>
+					<ul>
+						<div class="rating-star">
+								<span>
+									<i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+								<span>{{single_product.countReview}} reviews</span>
+								</span>
+						</div>
+						<li>Country living style at an affordable price</li>
+						<li>Small sideboard has three drawers and a cupboard with shelf</li>
+						<li>Drawers have cup handles</li>
+						<li>Cupboard has panelled doors and knobs</li>
+						<li>Top in oak with oak veneers</li>
+					</ul>
+
+					<p>There are many variations of passages of Lorem Ipsum available. but the majority have suffered alteration in sghtly believable.omised words which don't even look slightly believable.
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+<!--					<ul>-->
+<!--						<li><a href=""><img src="http://placehold.it/133x132" alt="Related - 1"></a></li>-->
+<!--						<li><a href=""><img src="http://placehold.it/133x132" alt="Related - 2"></a></li>-->
+<!--						<li><a href=""><img src="http://placehold.it/133x132" alt="Related - 3"></a></li>-->
+<!--						<li><a href=""><img src="http://placehold.it/133x132" alt="Related - 4"></a></li>-->
+<!--					</ul>-->
+				</div>
+				<div class="col-sm-6">
+					<div class="colors">
+						<p class="bolder">Color:</p>
+						<ul>
+							<li><a href="#" id="color1"></a>
+							<li><a href="#" id="color2"></a>
+							<li><a href="#" id="color3"></a>
+							<li><a href="#" id="color4"></a>
+							<li><a href="#" id="color5"></a>
+						</ul>
+					</div>
+					<div class="amount">
+						<p class="bolder">Quantity: </p>
+						<div class="quantity">
+							<a href="{% url 'add_cart' single_product.id %}" class="minus">-</a><span>1</span><a href="#" class="plus">+</a>
+						</div>
+					</div>
+					<div class="info">
+						<p><span class="bolder">Shipping Charges : </span>None</p>
+						<p><span class="bolder">Cash On Delivery : </span>Not Available</p>
+						<p><span class="bolder">Part Payment : </span>Not Available</p>
+					</div>
+					<div class="addtocart atproductpage">
+						<ul>
+							<li><button class="btn btn-warning" type="submit"> ADD TO CART <i class="fa fa-shopping-cart"></i></button>
+						</ul>
+
+					</div>
+
+				</div>
+			</div>
+
+		</form>
+			<br>
+		<div class="row">
+			<div class="col-md-9">
+
+
+
+				<form action="{% url 'submit_review' single_product.id %}" method="POST">
+					{% csrf_token %}
+					<h5>Write Your Review</h5>
+
+					<div>
+						<!-- Rating stars -->
+						<label>How do you rate this product?</label>
+						<br>
+						<div style="display: inline-block;   border: 0;" class="rate">
+							<input style="display: none;" type="radio" name="rating" id="rating10" value="5" required /><label style="float: right;" for="rating10" title="5"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating9" value="4.5" required /><label style="float: right;" for="rating9" title="4.5" class="half"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating8" value="4" required /><label style="float: right;" for="rating8" title="4"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating7" value="3.5" required /><label style="float: right;" for="rating7" title="3.5" class="half"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating6" value="3" required /><label style="float: right;" for="rating6" title="3"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating5" value="2.5" required /><label style="float: right;" for="rating5" title="2.5" class="half"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating4" value="2" required /><label style="float: right;" for="rating4" title="2"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating3" value="1.5" required /><label style="float: right;" for="rating3" title="1.5" class="half"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating2" value="1" required /><label style="float: right;" for="rating2" title="1"></label>
+							<input style="display: none;" type="radio" name="rating" id="rating1" value="0.5" required /><label style="float: right;" for="rating1" title="0.5" class="half"></label>
+						</div>
+<br>
+						Review Title:
+						<input type="text" class="form-control" name="subject">
+						<br>
+						Review:
+						<textarea name="review" rows="4" class="form-control"></textarea>
+						<br>
+						<!-- {% if user.is_authenticated %}
+							{% if orderproduct %}
+								<input type="submit" value="Submit Review" class="btn btn-primary">
+							{% else %}
+								<p>You must purchase this product to post a review.</p>
+							{% endif %}
+						{% else %}
+						<p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
+						{% endif %} -->
+
+						{% if user.is_authenticated %}
+								<input style="color: #fff" type="submit" value="Submit Review" class="btn btn-warning">
+						{% else %}
+						<p>You must be logged in to post a review. <span><a href="{% url 'login' %}">Login now</a></span></p>
+						{% endif %}
+
+					</div>
+{% include 'includes/alerts.html' %}
+				</form>
+<br>
+
+<header class="section-heading">
+	<h3>Customer Reviews </h3>
+	<div class="rating-star">
+		<span>
+			<i class="fa fa-star{% if single_product.averageReview < 0.5 %}-o{% elif single_product.averageReview >= 0.5 and single_product.averageReview < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if single_product.averageReview < 1.5 %}-o{% elif single_product.averageReview >= 1.5 and single_product.averageReview < 2 %}-half-o {% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if single_product.averageReview < 2.5 %}-o{% elif single_product.averageReview >= 2.5 and single_product.averageReview < 3 %}-half-o {% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if single_product.averageReview < 3.5 %}-o{% elif single_product.averageReview >= 3.5 and single_product.averageReview < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
+			<i class="fa fa-star{% if single_product.averageReview < 4.5 %}-o{% elif single_product.averageReview >= 4.5 and single_product.averageReview < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
+	<span>{{single_product.countReview}} reviews</span>
+			</span>
+	</div>
+
+</header>
+
+{% for review in reviews %}
+				<article class="box mb-3">
+					<div class="icontext w-100">
+
+						<div class="text">
+							<span class="date text-muted float-md-right">{{review.updated_at}} </span>
+							<h6 class="mb-1">{{review.user.full_name}} </h6>
+							<div class="rating-star">
+								<span>
+									<i class="fa fa-star{% if review.rating == 0.5 %}-half-o{% elif review.rating < 1 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 1.5 %}-half-o{% elif review.rating < 2 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 2.5 %}-half-o{% elif review.rating < 3 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 3.5 %}-half-o{% elif review.rating < 4 %}-o {% endif %}" aria-hidden="true"></i>
+									<i class="fa fa-star{% if review.rating == 4.5 %}-half-o{% elif review.rating < 5 %}-o {% endif %}" aria-hidden="true"></i>
+								</span>
+							</div>
+						</div>
+					</div> <!-- icontext.// -->
+					<div class="mt-3">
+						<h6>{{review.subject}}</h6>
+						<p>
+							{{review.review}}
+						</p>
+					</div>
+				</article>
+{% endfor %}
+
+
+			</div> <!-- col.// -->
+		</div> <!-- row.// -->
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="tabs">
+    					<ul class="tab-links">
+					        <li class="active"><a href="#tab1">Description</a></li>
+					        <li><a href="#tab2">Information</a></li>
+					        <li><a href="#tab3">Reviews</a></li>
+					        <li><a href="#tab4">Tags</a></li>
+					        <li><a href="#tab5">Custom Tab</a></li>
+					    </ul>
+					    <div class="tab-content">
+					        <div id="tab1" class="tab active">
+					            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly b don't look even slightly believable.omised words which don't look even slightly believable.</p>
+					            <ul>
+					            	<li>Alteration in some form</li>
+					            	<li>By injected humour, or randomised</li>
+					            	<li>Words which don't look even</li>
+					            	<li>Even slightly believable.omised words</li>
+					            	<li>Which don't look slightly believable.</li>
+					            </ul>
+					            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by but the majority have suffered alteration in some form,</p>
+					        </div>
+
+					        <div id="tab2" class="tab">
+					            <p>Information content goes here!</p>
+					        </div>
+
+					        <div id="tab3" class="tab">
+					            <p>Reviews content goes here!</p>
+					        </div>
+
+					        <div id="tab4" class="tab">
+					            <p>Tags content goes here!</p>
+					        </div>
+
+					        <div id="tab5" class="tab">
+					            <p>Custom Tab goes here!</p>
+					        </div>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<hr>
+		</div>
+			</section>
+		<section id="myCarousel" class="container-fluid related withaddtocart carousel slide">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<h2>Related Products</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<p>Lorem Ipsum is simply dummy text of the printing and type dard dummy text ever since the 1500s.</p>
+				</div>
+			</div>
+			<div class="carousel-inner">
+				<div class="row prod-grid-6-next prod-grid-6 item active">
+					{% for single_product in products %}
+					<div class="col-sm-2">
+
+						<div class="addtocart">
+							<ul>
+								<li><a href="#"><img src="{{ single_product.images.url }}" alt="Add to cart" width="21" height="20"></a>
+								</li><li><a href="#"><img src="{{ single_product.images.url }}" alt="Wishlist" width="19" height="17"></a>
+								</li><li><a href="#"><img src="{{ single_product.images.url }}" alt="Fullscreen" width="17" height="17"></a></li>
+							</ul>
+						</div>
+						<a href="#"><img src="{{ single_product.images.url}}" alt="Product">{{ single_product.product_name}}</a>
+						<p>${{ single_product.price}}</p>
+					</div>
+					{% endfor %}
+
+				</div>
+
+
+
+				<div class="row prod-grid-6-next prod-grid-6 item">
+					{% for single_product in products %}
+					<div class="col-sm-2">
+						<div class="addtocart">
+							<ul>
+								<li><a href="#"><img src="{{ single_product.images.url }}" alt="Add to cart" width="21" height="20"></a>
+								</li><li><a href="#"><img src="{{ single_product.images.url}}" alt="Wishlist" width="19" height="17"></a>
+								</li><li><a href="#"><img src="{{ single_product.images.url}}" alt="Fullscreen" width="17" height="17"></a></li>
+							</ul>
+						</div>
+						<a href="#"><img src="{{ single_product.images.url }}" alt="Product">{{ single_product.product_name}}</a>
+						<p>${{ single_product.price }}</p>
+					</div>
+
+			{% endfor %}
+				</div>
+
+			</div>
+
+			<div class="row navlinks centered">
+				<div class="col-sm-1 col-sm-offset-5 col-xs-6">
+					<img src="http://placehold.it/26x50" alt="Previous" width="26" height="50"><a href="#myCarousel" class="left1 linethrough" role="button" data-slide="prev">PREV</a>
+				</div>
+				<div class="col-sm-1 col-xs-6">
+					<a href="#myCarousel" class="right1 linethrough" role="button" data-slide="next">NEXT</a><img src="http://placehold.it/26x50" alt="Next" width="26" height="50">
+				</div>
+			</div>
+
+		</section>
+
+
+
+	</body>
+</html>
+{% endblock %}

@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div id="main-browser" class="marged-cont withaddtocart">
+			<div class="container-fluid">
+				<div class="row options">
+					<div class="col-sm-8">
+						<select>
+	 						<option value="allbrands">All Brands</option>
+	 						<option value="brand1">Brand 1</option>
+	 						<option value="brand2">Brand 2</option>
+	 						<option value="brand3">Brand 3</option>
+	 					</select>
+						<select>
+	 						<option value="loungechaires">Lounge Chaires</option>
+	 						<option value="living">Living</option>
+	 						<option value="bedroom">Bedroom</option>
+	 					</select>
+						<select>
+	 						<option value="10-100">$10 to $100</option>
+	 						<option value="200-500">$200 to $500</option>
+	 						<option value="500-1000">$500 to $1000</option>
+	 						<option value="1000">over $1000</option>
+	 					</select>
+						<select>
+	 						<option value="white">White</option>
+	 						<option value="red">Red</option>
+	 						<option value="black">Black</option>
+	 						<option value="blue">Blue</option>
+	 						<option value="pink">Pink</option>
+	 					</select>
+						<ul class="opts">
+							<li><a href="browse1.html#main-browser"><img src="http://placehold.it/33x33" alt="Layout 1" width="33" height="33"></a></li>
+							<li><a href="browse2.html#main-browser"><img src="http://placehold.it/33x33" alt="Layout 2" width="33" height="33"></a></li>
+							<li class="active"><img src="http://placehold.it/33x33" alt="Layout 3" width="33" height="33"></li>
+						</ul>
+					</div>
+					<div class="col-sm-4">
+						<div class="floater">
+							<span class="bolder">Showing 1-12 of 24 items</span>
+							<select>
+		 						<option value="16items">16 Items</option>
+		 					</select>
+		 				</div>
+					</div>
+				</div>
+				<div class="row prod-grid-6">
+		{% if products %}
+		{% for product in products %}
+					<div class="col-sm-2">
+						<div class="addtocart">
+							<ul>
+								<li><a href="#"><img src="{{ product.images.url  }}" alt="Add to cart" width="21" height="20"></a>
+								</li><li><a href="#"><img src="{{ product.images.url  }}" alt="Wishlist" width="19" height="17"></a>
+								</li><li><a href="#"><img src="{{ product.images.url  }}" alt="Fullscreen" width="17" height="17"></a></li>
+							</ul>
+						</div>
+						<a href="{{ product.get_url }}"><img src="{{ product.images.url  }}" alt="Product">{{ product.product_name }}</a>
+						<p>${{ product.price  }}</p>
+
+							<a href="{{ product.get_url }}" class="btn btn-warning">View Details</a>
+					</div>
+
+
+		{% endfor %}
+		{% endif %}
+					</div>
+
+
+
+
+<!--Extra elements-->
+				<div class="showmore">
+					<div class="row prod-grid-6">
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Mono Lounge Chair</a>
+							<p>$899.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+					</div>
+					<div class="row prod-grid-6 prod-grid-6-next">
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Mono Lounge Chair</a>
+							<p>$899.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+					</div>
+					<div class="row prod-grid-6 prod-grid-6-next">
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Mono Lounge Chair</a>
+							<p>$899.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+					</div>
+					<div class="row prod-grid-6 prod-grid-6-next">
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Mono Lounge Chair</a>
+							<p>$899.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+					</div>
+					<div class="row prod-grid-6 prod-grid-6-next">
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Mono Lounge Chair</a>
+							<p>$899.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Hot Mesh Lounge Chair</a>
+							<p>$299.00</p>
+						</div>
+						<div class="col-sm-2">
+							<div class="addtocart">
+								<ul>
+									<li><a href="#"><img src="http://placehold.it/21x20" alt="Add to cart" width="21" height="20"></a>
+									</li><li><a href="#"><img src="http://placehold.it/19x17" alt="Wishlist" width="19" height="17"></a>
+									</li><li><a href="#"><img src="http://placehold.it/17x17" alt="Fullscreen" width="17" height="17"></a></li>
+								</ul>
+							</div>
+							<a href="#"><img src="http://placehold.it/219x219" alt="Product">Cleon Lounge Chair</a>
+							<p>$1,199.00</p>
+						</div>
+					</div>
+				</div>
+
+
+<!--End of entra elements-->
+
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-4">
+						<a href="#showmoretrigger" id="showmoretrigger" class="linethrough">VIEW MORE PRODUCTS</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+{% endblock %}

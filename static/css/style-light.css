@@ -1,0 +1,16 @@
+/*Light theme styles*/
+
+input:focus,
+textarea:focus{
+	transition:border-color 0.5s ease;
+	border-color:#e69900;
+}
+
+
+header #topbar{
+	background-color:#ffc859;
+}
+
+footer .jumbotron{
+	background-color: #ffc859;
+}
