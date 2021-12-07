@@ -53,6 +53,9 @@
 							{{ cart_item.sub_total }}
 							</td>
 							<td>
+								<a class="removefromcart" href="{% url 'remove_cart_item' cart_item.product.id cart_item.id %}">&times;</a>
+							</td>
+							<td>
 								<a class="removefromcart" href="#">{{ cart_item.product.quantity }}</a>
 							</td>
 						</tr>

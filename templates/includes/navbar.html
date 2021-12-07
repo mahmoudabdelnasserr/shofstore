@@ -48,7 +48,7 @@
 						<ul id="topright">
 							<li>Order Direct on: 0123-456-789</li>
 							<li>&nbsp;|&nbsp;</li>
-							<li id="searchlink" class="searchlink withpopup"><a href="#" class="search"><img src="{% static 'images/imgs/search1.jpg' %}" alt="Search" width="14" height="14"></a>
+							<li id="searchlink" class="searchlink withpopup"><a href="#" class="search"><img src="{% static 'admin/img/search.svg' %}" alt="Search" width="14" height="14"></a>
 								<div class="popup" id="searchform">
 		      						<form class="search" action="{% url 'search' %}" method="GET">
 		        						<input type="text" class="s" id="s" placeholder="Search..." name="keyword">
@@ -57,7 +57,7 @@
       							</div>
 							</li>
 							<li>&nbsp;|&nbsp;</li>
-							<li id="userlink" class="userlogin withpopup"><a href="#"><img src="{% static 'images/imgs/user.png' %}" alt="User" width="14" height="14"></a>
+							<li id="userlink" class="userlogin withpopup"><a href="#"><img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"/></a>
 								<div class="popup" id="usermenu">
 									{% if user.id is none %}
 		      						<ul>
@@ -90,7 +90,7 @@
 							<div id="cartitems">
 								<span style="color:red">&nbsp; {{ cart_count }}</span>
 							</div>
-							<a href="{% url 'cart' %}"><img src="{% static 'images/imgs/cart.jpg' %}" alt="Cart" width="30" height="30"></a>
+							<a href="{% url 'cart' %}"><img src="https://img.icons8.com/material-rounded/24/000000/favorite-cart.png"/></a>
 						</div>
 							{% for single_product in products %}
 						<div id="cartpopup">
